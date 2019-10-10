@@ -35,9 +35,10 @@ router.post('/chatfuel', async function(req, res, next) {
     ]
   }
 
-  // console.log(reply.output.generic[1].options[0].value.input.text)
+  console.log(reply.output)
 
   reply.output.generic.map(item=>{
+    console.log(item)
 
     if(item.response_type==="text"){
       // Send Message 
@@ -56,12 +57,12 @@ router.post('/chatfuel', async function(req, res, next) {
                 {
                   "type": "show_block",
                   "block_names": [reply.output.generic[1].options[0].value.input.text],
-                  "title": "YES"
+                  "title": reply.output.generic[1].options[0].label
                 },
                 {
                   "type": "show_block",
                   "block_names": [reply.output.generic[1].options[1].value.input.text],
-                  "title": "No"
+                  "title":reply.output.generic[1].options[1].label
                 }
               ]
             }
